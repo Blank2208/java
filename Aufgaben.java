@@ -64,12 +64,27 @@ public class Aufgaben {
     }
 
 
+    // Aufgabe: Reihensumme bis zum angegebenen n berechnen
+        public static void reihensumme(String n, String k){
+            System.out.println("n " + n);
+            int nAsInteger = Integer.parseInt(n);
+            int kAsInteger = Integer.parseInt(k);
+            //double k = 2;
+            double kPlus1 = kAsInteger + 1;
+            double result = 0;
+            double gleichung = ((2 * kPlus1) / (Math.pow(kAsInteger, 2)) * Math.pow(kPlus1, 2));
+
+            for (int i = 0; i < nAsInteger; i++){
+                result += gleichung;
+            }
+            System.out.println("Result: " + result);
+        }
+
     public static void main(String[] args){
-        Scanner user_input = new Scanner(System.in);
+        Scanner userInput = new Scanner(System.in);
         System.out.println("Geben Sie bitte eine Zeichenfolge ein!");
-        String input = user_input.nextLine();
+        String input = userInput.nextLine();
         palindrome(input);
-        user_input.close(); // Scanner schliessen zwecks Memory leak
 
 
         // Array darauf pruefen, ob sortiert oder nicht
@@ -78,7 +93,15 @@ public class Aufgaben {
 
 
         // Matrix
-        int[][] matrix = {{1,2,3}, {4,5,6}};
+        int[][] matrix = {{1,2,3, 7, 20}, {4,5,6, 92, 15}, {13, 14, 77, 25, 10}, {34, 32, 31, 30, 25}};
         transpose(matrix);
+
+        // Reihensumme
+        System.out.println("Geben Sie bitte die Laufvariable n ein!");
+        String laufvariable = userInput.nextLine();
+        System.out.println("Geben Sie bitte die Zahl für k ein!");
+        String k = userInput.nextLine();
+        userInput.close(); // Scanner schliessen zwecks Memory leak
+        reihensumme(laufvariable, k);
     }
 }
