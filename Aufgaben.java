@@ -68,14 +68,12 @@ public class Aufgaben {
         public static void reihensumme(String n, String k){
             System.out.println("n " + n);
             int nAsInteger = Integer.parseInt(n);
-            int kAsInteger = Integer.parseInt(k);
             //double k = 2;
-            double kPlus1 = kAsInteger + 1;
             double result = 0;
-            double gleichung = ((2 * kPlus1) / (Math.pow(kAsInteger, 2)) * Math.pow(kPlus1, 2));
 
-            for (int i = 0; i < nAsInteger; i++){
-                result += gleichung;
+            for (int kAsInteger = Integer.parseInt(k);  kAsInteger <= nAsInteger; kAsInteger++){
+
+                result += ((2 * kAsInteger) / (Math.pow(kAsInteger, 2)) * Math.pow(kAsInteger, 2));
             }
             System.out.println("Result: " + result);
         }
