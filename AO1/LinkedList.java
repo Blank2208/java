@@ -14,7 +14,14 @@ public class LinkedList implements MyCollection{
         this.tail = null;   // Leere Liste hat keinen Schwanz
     }
 
+    public LinkedList(MyCollection otherCollection){
+        this(); // Ruft den Konstruktor oben auf (initialisiert also size, head und tail
+        int[] elementsToCopy = otherCollection.elements(); // Nutzt die elements()-Methode des Interfaces
+        for (int element : elementsToCopy) {  // Jedes Element in die neue LinkedList einfügen
+            this.add(element); // Fügt jedes Element mit der add-Methode der LinkedList hinzu
+        }
 
+    }
     // Getter Methoden der LinkedList
     public int getSize(){
         return this.size;
@@ -69,6 +76,7 @@ public class LinkedList implements MyCollection{
         }
         // Wenn Liste nicht leer ist, dann fuegen wir das Element am Ende der Liste (tail) hinzu
         else {
+            this.tail.setNext(newElement);
             this.tail = newElement;
         }
         this.size++; // Da ein neues Element hinzugefuegt wurde, muessen wir auch die groesse erhoehen
@@ -126,24 +134,15 @@ public class LinkedList implements MyCollection{
             if(currentHead.value == element){
                 return true;
             }
-            currentHead = this.head.next;   // Springe zum naechsten Head, wenn du das Element nicht hast
+            currentHead = currentHead.getNext();   // Springe zum naechsten Head, wenn du das Element nicht hast
         }
         return false;   // While-Schleife hat null erreicht, das Element ist nicht in der LinkedList
     }
 
 
     @Override
-    public int size(){
-        int countElements = 0;
-        if(this.head == null){
-            return countElements;
-        }
-        ListElement currentHead = this.head;
-        while(currentHead != null) {
-            countElements++;
-            currentHead = this.head.next;
-        }
-        return countElements;
+    public int size() {
+        return this.size;
     }
 
 
@@ -164,5 +163,61 @@ public class LinkedList implements MyCollection{
         }
        return elements;
     }
+
+
+    // Wandle Array in ein einzigen String um
+    @Override
+    public String toString(){
+        String arrayAsString = "";
+        int[] elements = elements();  // Hole dir alle Elemente als Liste
+        if(elements == null || elements.length == 0){
+            return arrayAsString;
+        }
+        int laufVariable = 0;
+        for (int element : elements){
+            laufVariable++;
+            if(laufVariable == elements.length){
+                arrayAsString += element;
+            }
+            else{
+                arrayAsString += element + ",";
+            }
+        }
+        return arrayAsString;
+    }
+
+    // Neue Methoden fuer den Stack
+    public void addHead(int element) {
+        ListElement newElement = new ListElement(element);
+
+        if (this.head == null) {
+            this.head = newElement;
+            this.tail = newElement;
+        } else {
+            newElement.next = this.head;
+            this.head = newElement;
+        }
+        size++;
+    }
+
+
+    public int removeHead() {
+        // Tail ist immer das am weitesten rechts stehende Element, Head immer das links
+        if(this.head == null) {
+            return -1;
+        }
+
+        // Der aktuelle head wird zum naechsten head (bspw. bei 10 --> 20 --> 30 wird nun 20--> 30
+        int removed = this.head.value;  // Wir muessen einen int-Wert zurueckgeben
+        this.head = this.head.next; // Der aktuelle Head soll ja entfernt werden, dadurch setzen wir ihn dann auf den naechsten
+
+        // Wenn das naechste Element null ist
+        if (this.head == null) {
+            this.tail = null;
+        }
+        size--; // Da Element entfernt, reduzieren wir die size der Liste
+        return removed;
+    }
+
 
 }
