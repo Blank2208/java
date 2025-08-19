@@ -1,12 +1,14 @@
+package uebung01;
+
 public class Uebung {
 
-    // Array-Uebung
+    // Array-uebung01.Uebung
     public static void foo(int[][] inputArray){
         System.out.println("Das übergebene Array der Funktion foo() besteht aus "+inputArray.length+" weiteren Arrays");
     }
 
     public static void main(String[] args){
-        // Array-Uebung
+        // Array-uebung01.Uebung
         int[][] arr = {{12, 34, 10}, {74, 25, 19}}; // int[] = Array von Ganzzahlen; int[][] = Array von Arrays (hier zweidimensional); Als Tabelle: Zwei Zeilen und drei Spalten
         int sizeFirst = arr.length;  // Anzahl der Zeilen --> Zwei Arrays, also zwei Zeilen
         System.out.println("arr.length: " + arr.length);

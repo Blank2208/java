@@ -2,7 +2,7 @@ package AO1;
 
 // LinkedList ist quasi der Zug, der den Fahrplan kennt
 public class LinkedList implements MyCollection{
-    // Klassenattribute der LinkedList - private gemacht, da nur ueber getter und setter Methoden information nach außen kommen sollen (laut Uebung bzw. Vorlesung)
+    // Klassenattribute der LinkedList - private gemacht, da nur ueber getter und setter Methoden information nach außen kommen sollen (laut uebung01.Uebung bzw. Vorlesung)
     private int size;   // Groesse der LinkedList
     private ListElement head;   // Ausgabe head-Element
     private ListElement tail;   // Ausgabe tail-element
