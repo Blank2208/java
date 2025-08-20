@@ -1,5 +1,7 @@
 package uebung03;
 
+import java.util.Arrays;
+
 public class SearchAlgorithms {
 
     public static int linearSearch(int[] array, int element){
@@ -39,7 +41,8 @@ public class SearchAlgorithms {
     public static int quadraticBinarySearch(int[] array, int element) {
         int left = 0;
         int right = array.length - 1;
-
+        System.out.println("Array: " + Arrays.toString(array));
+        System.out.println("Right: " + right);
         while (left <= right) {
             if (left == right) {
                 return array[left] == element ? left : -1;
@@ -130,9 +133,11 @@ public class SearchAlgorithms {
         int resultLinearSearch = linearSearch(arr, 8);
         System.out.println("Result of linear search: " + resultLinearSearch);
 
-        int[] arr1 = {2,4,5,9,11,14,42,99,120,123};
+        int[] arr1 = {2,4,5,9,11,14,42,99,120,123, 200, 230, 300};
         int resultBinarySearch = binarySearch(arr1, 5);
         System.out.println("Result of binary search: " + resultBinarySearch);
+
+        int test = quadraticBinarySearch(arr1, 42);
 
     }
 }
